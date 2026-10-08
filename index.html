@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barberico Barbershop</title>
+<meta name="description" content="Barberico, barbershop chaleureux : coupe, barbe et rasage traditionnel au coin du feu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap">
+<style>
+/* Layout: one long evening in the shop. Photo hero, then a menu card of services set like an apothecary label, the story by the fire, gallery, hours and booking. Single warm dark world, deliberately one theme. */
+html,body{margin:0}
+:root{
+  --walnut:#160f0a;      /* page ground, dark walnut */
+  --wood:#21170f;        /* raised panels */
+  --wood-2:#2c1f15;      /* borders, inputs */
+  --amber:#e0a964;       /* shelf lighting, accent */
+  --copper:#b8763f;      /* secondary accent, lines */
+  --cream:#f1e6d4;       /* main text */
+  --stone:#b3a089;       /* muted text */
+  --display:"Marcellus","Cormorant Garamond",Georgia,serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --italic:"Instrument Serif",Georgia,serif;
+  --gutter:clamp(16px,5vw,64px);
+  --max:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--walnut);color:var(--cream);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:.01em}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.it{font-family:var(--italic);font-style:italic;color:var(--amber)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--walnut) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--wood-2)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-family:var(--display);font-weight:400;font-size:1.25rem;letter-spacing:.14em}
+.nav{display:flex;gap:28px;font-size:.88rem;color:var(--stone)}
+.nav a{text-decoration:none;transition:color .2s}
+.nav a:hover{color:var(--cream)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid var(--amber);color:var(--walnut);background:var(--amber);font:500 .88rem var(--body);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--amber)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:color-mix(in srgb,var(--cream) 40%,transparent)}
+.btn.ghost:hover{border-color:var(--amber);color:var(--amber)}
+.top .btn{padding:9px 16px;font-size:.78rem}
+@media (max-width:820px){.nav{display:none}}
+
+/* Hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--wood-2)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;z-index:-2;animation:settle 2.4s ease-out both}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,color-mix(in srgb,var(--walnut) 92%,transparent) 0%,color-mix(in srgb,var(--walnut) 70%,transparent) 42%,transparent 75%),
+  linear-gradient(0deg,var(--walnut) 0%,transparent 35%)}
+@keyframes settle{from{transform:scale(1.06)}to{transform:scale(1)}}
+.hero .wrap{padding-block:clamp(88px,14vw,170px) clamp(64px,9vw,120px);display:grid;gap:26px;max-width:var(--max)}
+.hero h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.02;max-width:12ch}
+.hero p.lead{max-width:44ch;font-size:clamp(1rem,1.6vw,1.15rem);color:color-mix(in srgb,var(--cream) 86%,var(--stone))}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:18px;font-size:.85rem;color:var(--stone)}
+.hero .facts span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);margin-right:10px;vertical-align:middle}
+
+section{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;gap:14px;margin-bottom:clamp(36px,5vw,56px);max-width:60ch}
+.head h2{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.08}
+.head p{color:var(--stone)}
+
+/* Services as a menu card */
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4vw,56px)}
+.menu h3{font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);padding-bottom:14px;border-bottom:1px solid var(--copper);margin-bottom:6px}
+.svc{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding-block:18px;border-bottom:1px dashed color-mix(in srgb,var(--copper) 45%,transparent)}
+.svc .n{display:flex;align-items:baseline;gap:10px;min-width:0}
+.svc .n strong{font-family:var(--display);font-weight:400;font-size:1.22rem}
+.svc .n em{font-style:normal;font-size:.78rem;color:var(--stone);white-space:nowrap}
+.svc .p{font-family:var(--display);font-size:1.3rem;color:var(--amber);font-variant-numeric:tabular-nums}
+.svc .d{grid-column:1/-1;color:var(--stone);font-size:.92rem;max-width:56ch}
+.note{margin-top:28px;font-size:.82rem;color:var(--stone)}
+
+/* Story */
+.story{background:var(--wood);border-block:1px solid var(--wood-2)}
+.story .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.story figure{margin:0;position:relative}
+.story figure img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;max-width:100%}
+.story figure figcaption{position:absolute;left:16px;bottom:16px;right:16px;font-family:var(--italic);font-style:italic;font-size:1.1rem;color:var(--cream);text-shadow:0 1px 12px #000}
+.story .txt{display:grid;gap:20px;min-width:0}
+.story .txt h2{font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.08}
+.story .txt p{color:color-mix(in srgb,var(--cream) 80%,var(--stone));max-width:52ch}
+.rituals{display:grid;gap:0;margin-top:8px;border-top:1px solid var(--wood-2)}
+.rituals div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--wood-2);font-size:.95rem}
+.rituals dt{color:var(--amber);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;padding-top:3px}
+.rituals dd{margin:0;color:var(--cream)}
+@media (max-width:820px){.story .wrap{grid-template-columns:1fr}.story figure img{aspect-ratio:4/3}}
+
+/* Gallery */
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,minmax(160px,1fr));gap:12px}
+.gal figure{margin:0;overflow:hidden;position:relative;background:var(--wood)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%;transition:transform .8s ease,filter .8s ease;filter:saturate(.92)}
+.gal figure:hover img{transform:scale(1.04);filter:saturate(1.05)}
+.gal figcaption{position:absolute;left:12px;bottom:10px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);text-shadow:0 1px 8px #000}
+.gal .big{grid-row:1/3}
+.gal .wide{grid-column:2/4}
+@media (max-width:720px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gal .big{grid-column:1/-1;grid-row:auto;aspect-ratio:16/10}.gal .wide{grid-column:1/-1;aspect-ratio:16/9}.gal figure:not(.big):not(.wide){aspect-ratio:1}}
+
+/* Visit */
+.visit .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,80px)}
+@media (max-width:860px){.visit .wrap{grid-template-columns:1fr}}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:13px 0;border-bottom:1px solid var(--wood-2)}
+.hours td:last-child{text-align:right;color:var(--stone)}
+.hours tr.today td{color:var(--amber)}
+.hours tr.today td:first-child::after{content:"aujourd’hui";margin-left:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--copper);padding:2px 6px;vertical-align:2px}
+.contact{display:grid;gap:6px;margin-top:32px;color:var(--stone);font-size:.95rem}
+.contact strong{color:var(--cream);font-weight:500}
+.book{background:var(--wood);border:1px solid var(--wood-2);padding:clamp(22px,4vw,40px);display:grid;gap:18px;align-content:start}
+.book h3{font-size:1.8rem}
+.book p{color:var(--stone);font-size:.92rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:480px){.grid2{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);min-width:0}
+input,select{width:100%;font:400 1rem var(--body);color:var(--cream);background:var(--walnut);border:1px solid var(--wood-2);padding:12px 12px;border-radius:0;appearance:none;-webkit-appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--amber) 50%),linear-gradient(135deg,var(--amber) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px}
+input:focus,select:focus{outline:none;border-color:var(--amber)}
+.book .btn{justify-content:center;width:100%}
+.ok{border-left:2px solid var(--amber);padding:10px 14px;color:var(--cream);font-size:.92rem;background:color-mix(in srgb,var(--amber) 8%,transparent)}
+
+footer{border-top:1px solid var(--wood-2);padding-block:36px;color:var(--stone);font-size:.82rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#accueil" aria-label="Barberico, accueil">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="var(--amber)" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="Marcellus, Georgia, serif" font-size="20" fill="var(--amber)">B</text></svg>
+      <b>BARBERICO</b>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#services">Services</a><a href="#maison">La maison</a><a href="#galerie">Galerie</a><a href="#visite">Horaires</a>
+    </nav>
+    <a class="btn" href="#reserver">Réserver</a>
+  </div>
+</header>
+
+<main id="accueil">
+  <section class="hero" style="padding:0">
+    <img src="images/salon.jpg" alt="Le salon Barberico : deux fauteuils en cuir, étagères en noyer éclairées et cheminée en pierre">
+    <div class="wrap">
+      <span class="eyebrow">Barbershop · Depuis 2024</span>
+      <h1>Prenez place <span class="it">au coin du feu.</span></h1>
+      <p class="lead">Coupes précises, barbes sculptées et rasage à la serviette chaude, dans un salon de bois, de cuir et de lumière ambrée. On vous sert un café, le reste nous regarde.</p>
+      <div class="ctas">
+        <a class="btn" href="#reserver">Prendre rendez-vous</a>
+        <a class="btn ghost" href="#services">Voir les tarifs</a>
+      </div>
+      <div class="facts"><span>Café offert</span><span>Fauteuils Belmont</span><span>Avec ou sans rendez-vous</span></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">La carte</span>
+        <h2>Services &amp; tarifs</h2>
+        <p>Chaque prestation commence par un diagnostic et se termine par un coiffage soigné. Durées données à titre indicatif.</p>
+      </div>
+      <div class="menu">
+        <div>
+          <h3>Cheveux</h3>
+          <div class="svc"><div class="n"><strong>Coupe homme</strong><em>30 min</em></div><div class="p">25 €</div><p class="d">Shampoing, coupe aux ciseaux ou à la tondeuse, coiffage.</p></div>
+          <div class="svc"><div class="n"><strong>Dégradé à blanc</strong><em>40 min</em></div><div class="p">28 €</div><p class="d">Skin fade net, transitions travaillées, contours au rasoir.</p></div>
+          <div class="svc"><div class="n"><strong>Coupe enfant</strong><em>20 min</em></div><div class="p">18 €</div><p class="d">Jusqu’à 12 ans, avec la patience qu’il faut.</p></div>
+          <div class="svc"><div class="n"><strong>Coupe &amp; barbe</strong><em>50 min</em></div><div class="p">38 €</div><p class="d">La formule complète, avec serviette chaude pour finir.</p></div>
+        </div>
+        <div>
+          <h3>Barbe &amp; rasage</h3>
+          <div class="svc"><div class="n"><strong>Taille de barbe</strong><em>20 min</em></div><div class="p">18 €</div><p class="d">Mise en forme, contours au rasoir, huile à barbe.</p></div>
+          <div class="svc"><div class="n"><strong>Rasage traditionnel</strong><em>35 min</em></div><div class="p">30 €</div><p class="d">Serviettes chaudes, mousse au blaireau, rasoir coupe-chou, baume apaisant.</p></div>
+          <div class="svc"><div class="n"><strong>Soin visage</strong><em>25 min</em></div><div class="p">22 €</div><p class="d">Gommage, masque et serviette chaude pour une peau reposée.</p></div>
+          <div class="svc"><div class="n"><strong>Le Rituel Barberico</strong><em>75 min</em></div><div class="p">55 €</div><p class="d">Coupe, rasage traditionnel et soin visage, au coin du feu.</p></div>
+        </div>
+      </div>
+      <p class="note">Tarifs indicatifs, à ajuster avant la mise en ligne.</p>
+    </div>
+  </section>
+
+  <section class="story" id="maison">
+    <div class="wrap">
+      <figure>
+        <img src="images/cheminee.jpg" alt="La cheminée en pierre du salon, feu allumé">
+        <figcaption>Le feu est allumé dès novembre.</figcaption>
+      </figure>
+      <div class="txt">
+        <span class="eyebrow">La maison</span>
+        <h2>Un salon où l’on <span class="it">prend son temps</span></h2>
+        <p>Barberico est né d’une idée simple : le passage chez le barbier doit rester un moment à soi. Murs en noyer, pierre brute, cuir patiné et lumière douce, tout ici invite à ralentir.</p>
+        <p>Nos barbiers travaillent la coupe classique comme les dégradés modernes, avec des produits choisis que vous retrouvez sur nos étagères.</p>
+        <dl class="rituals">
+          <div><dt>Accueil</dt><dd>Un espresso, un thé ou une boisson fraîche pendant l’attente.</dd></div>
+          <div><dt>Le fauteuil</dt><dd>Deux postes, deux fauteuils Belmont, jamais de précipitation.</dd></div>
+          <div><dt>Les produits</dt><dd>Huiles, baumes et cires en vente au salon, conseillés selon votre barbe.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="galerie">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Galerie</span>
+        <h2>L’atmosphère du salon</h2>
+      </div>
+      <div class="gal">
+        <figure class="big"><img src="images/fauteuil.jpg" alt="Fauteuil de barbier en cuir brun"><figcaption>Le fauteuil</figcaption></figure>
+        <figure><img src="images/etageres.jpg" alt="Étagères en bois éclairées garnies de flacons"><figcaption>Les étagères</figcaption></figure>
+        <figure><img src="images/cheminee.jpg" alt="Cheminée en pierre"><figcaption>La cheminée</figcaption></figure>
+        <figure class="wide"><img src="images/salon.jpg" alt="Vue d’ensemble du salon Barberico" style="object-position:50% 55%"><figcaption>Le salon</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visite" style="padding-top:0">
+    <div class="wrap">
+      <div>
+        <div class="head" style="margin-bottom:28px">
+          <span class="eyebrow">Nous rendre visite</span>
+          <h2>Horaires</h2>
+        </div>
+        <table class="hours" aria-label="Horaires d’ouverture">
+          <tbody>
+            <tr data-d="1"><td>Lundi</td><td>Fermé</td></tr>
+            <tr data-d="2"><td>Mardi</td><td>9h00 – 19h00</td></tr>
+            <tr data-d="3"><td>Mercredi</td><td>9h00 – 19h00</td></tr>
+            <tr data-d="4"><td>Jeudi</td><td>9h00 – 20h00</td></tr>
+            <tr data-d="5"><td>Vendredi</td><td>9h00 – 20h00</td></tr>
+            <tr data-d="6"><td>Samedi</td><td>8h30 – 17h00</td></tr>
+            <tr data-d="0"><td>Dimanche</td><td>Fermé</td></tr>
+          </tbody>
+        </table>
+        <div class="contact">
+          <strong>Barberico Barbershop</strong>
+          <span>Adresse à compléter</span>
+          <span>Téléphone : à compléter</span>
+          <span>Instagram : @barberico</span>
+        </div>
+      </div>
+
+      <form class="book" id="reserver" novalidate>
+        <span class="eyebrow">Rendez-vous</span>
+        <h3>Réserver votre fauteuil</h3>
+        <p>Choisissez une prestation et un créneau, nous confirmons par SMS.</p>
+        <label for="f-name">Nom<input id="f-name" name="name" autocomplete="name" placeholder="Votre nom" required></label>
+        <div class="grid2">
+          <label for="f-tel">Téléphone<input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="06 00 00 00 00" required></label>
+          <label for="f-svc">Prestation<select id="f-svc" name="service">
+            <option>Coupe homme</option><option>Dégradé à blanc</option><option>Coupe &amp; barbe</option><option>Taille de barbe</option><option>Rasage traditionnel</option><option>Soin visage</option><option>Le Rituel Barberico</option><option>Coupe enfant</option>
+          </select></label>
+        </div>
+        <div class="grid2">
+          <label for="f-date">Date<input id="f-date" name="date" type="date" required></label>
+          <label for="f-time">Heure<select id="f-time" name="time"></select></label>
+        </div>
+        <button class="btn" type="submit">Demander ce créneau</button>
+        <p class="ok" id="f-ok" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Barberico Barbershop</span>
+    <span>Coupe · Barbe · Rasage traditionnel</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=new Date().getDay();
+  var row=document.querySelector('.hours tr[data-d="'+d+'"]');
+  if(row) row.classList.add('today');
+
+  var t=document.getElementById('f-time');
+  for(var h=9;h<19;h++){for(var m=0;m<60;m+=30){var o=document.createElement('option');o.textContent=h+'h'+(m?'30':'00');t.appendChild(o);}}
+  var date=document.getElementById('f-date');
+  var tm=new Date();tm.setDate(tm.getDate()+1);
+  date.min=new Date().toISOString().slice(0,10);
+  if(!date.value) date.value=tm.toISOString().slice(0,10);
+
+  var form=document.getElementById('reserver'),ok=document.getElementById('f-ok');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.elements.name.value.trim(),tel=form.elements.tel.value.trim();
+    if(!name||!tel){ok.textContent='Indiquez votre nom et votre téléphone pour demander un créneau.';ok.hidden=false;return;}
+    var dt=new Date(date.value+'T12:00');
+    var label=isNaN(dt)?date.value:dt.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+    ok.textContent='Aperçu : '+form.elements.service.value+' le '+label+' à '+t.value+'. Le formulaire sera relié à votre outil de réservation lors de la mise en ligne.';
+    ok.hidden=false;
+  });
+})();
+</script>
+</body>
+</html>
