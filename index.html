@@ -133,6 +133,13 @@ input:focus,select:focus{outline:none;border-color:var(--amber)}
 
 footer{border-top:1px solid var(--wood-2);padding-block:36px;color:var(--stone);font-size:.82rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+
+/* Theme switcher shared with the "Atelier" version */
+.themes{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:2px;padding:4px;background:var(--wood);border:1px solid var(--wood-2);font:500 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase}
+.themes a{padding:8px 12px;text-decoration:none;color:var(--stone)}
+.themes a[aria-current]{background:var(--amber);color:var(--walnut)}
+.themes a:hover{color:var(--cream)}
+.themes a[aria-current]:hover{color:var(--walnut)}
 </style>
 </head>
 <body>
@@ -281,6 +288,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     <span>Coupe · Barbe · Rasage traditionnel</span>
   </div>
 </footer>
+
+<nav class="themes" aria-label="Choisir un thème">
+  <a href="./" aria-current="page">Classique</a><a href="atelier/">Atelier</a>
+</nav>
 
 <script>
 (function(){
