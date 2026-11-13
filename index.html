@@ -140,6 +140,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 .themes a[aria-current]{background:var(--amber);color:var(--walnut)}
 .themes a:hover{color:var(--cream)}
 .themes a[aria-current]:hover{color:var(--walnut)}
+
+/* Brands strip: black logo banner blended into the walnut ground */
+.brands{padding-block:clamp(48px,7vw,80px);border-top:1px solid var(--wood-2)}
+.brands .wrap{display:grid;gap:24px;justify-items:center;text-align:center}
+.brands img{display:block;width:100%;max-width:1100px;height:auto;mix-blend-mode:screen;opacity:.9}
+.brands p{color:var(--stone);font-size:.92rem;max-width:52ch}
 </style>
 </head>
 <body>
@@ -196,6 +202,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
         </div>
       </div>
       <p class="note">Tarifs indicatifs, à ajuster avant la mise en ligne.</p>
+    </div>
+  </section>
+
+  <section class="brands" id="marques">
+    <div class="wrap">
+      <span class="eyebrow">Nos produits</span>
+      <img src="images/marques.jpg" alt="Les marques utilisées au salon : Reuzel, L’Anza, 18.21 Man Made et Layrite" width="1600" height="180" loading="lazy">
+      <p>Les cires, huiles et soins de ces marques sont utilisés au fauteuil et disponibles à la vente au salon.</p>
     </div>
   </section>
 
