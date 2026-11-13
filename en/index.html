@@ -114,8 +114,8 @@ section{padding-block:clamp(72px,10vw,128px)}
 @media (max-width:720px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gal .big{grid-column:1/-1;grid-row:auto;aspect-ratio:16/10}.gal .wide{grid-column:1/-1;aspect-ratio:16/9}.gal figure:not(.big):not(.wide){aspect-ratio:1}}
 
 /* Visit */
-.visit .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,80px)}
-@media (max-width:860px){.visit .wrap{grid-template-columns:1fr}}
+.visit .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:clamp(32px,6vw,80px)}
+@media (max-width:980px){.visit .wrap{grid-template-columns:1fr}}
 .hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .hours td{padding:13px 0;border-bottom:1px solid var(--wood-2)}
 .hours td:last-child{text-align:right;color:var(--stone)}
@@ -153,6 +153,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 .top .right{display:flex;align-items:center;gap:10px}
 @media (max-width:560px){.top .right .btn{display:none}.brand b{font-size:1.05rem}.langs a{padding:6px 6px}
 .hero::after{background:linear-gradient(0deg,var(--walnut) 0%,color-mix(in srgb,var(--walnut) 72%,transparent) 100%)}}
+
+/* SimplyBook booking widget */
+.sb-wrap{min-height:520px;background:#f6efe4;min-width:0}
+.sb-wrap iframe{display:block;width:100%;border:0}
+.sb-fallback{font-size:.82rem}
+.sb-fallback a{color:var(--amber)}
 </style>
 </head>
 <body>
@@ -284,24 +290,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
         </div>
       </div>
 
-      <form class="book" id="reserver" novalidate>
+      <div class="book" id="reserver">
         <span class="eyebrow">Appointment</span>
         <h3>Book your chair</h3>
-        <p>Choose a service and a time, we’ll confirm by text message.</p>
-        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" placeholder="Your name" required></label>
-        <div class="grid2">
-          <label for="f-tel">Phone<input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="0470 00 00 00" required></label>
-          <label for="f-svc">Service<select id="f-svc" name="service">
-            <option>Men’s haircut</option><option>Skin fade</option><option>Haircut &amp; beard</option><option>Beard trim</option><option>Traditional shave</option><option>Facial</option><option>The Barberico Ritual</option><option>Kids’ haircut</option>
-          </select></label>
-        </div>
-        <div class="grid2">
-          <label for="f-date">Date<input id="f-date" name="date" type="date" required></label>
-          <label for="f-time">Time<select id="f-time" name="time"></select></label>
-        </div>
-        <button class="btn" type="submit">Request this time</button>
-        <p class="ok" id="f-ok" hidden></p>
-      </form>
+        <p>Choose a service and a time, and book online right away.</p>
+        <div id="sb-widget" class="sb-wrap"></div>
+        <p class="sb-fallback">Widget not showing? Book directly at <a href="https://barberico.simplybook.it" target="_blank" rel="noopener">barberico.simplybook.it</a></p>
+      </div>
     </div>
   </section>
 </main>
@@ -318,25 +313,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   var d=new Date().getDay();
   var row=document.querySelector('.hours tr[data-d="'+d+'"]');
   if(row) row.classList.add('today');
-
-  var t=document.getElementById('f-time');
-  for(var h=9;h<20;h++){for(var m=0;m<60;m+=30){var o=document.createElement('option');o.textContent=h+':'+(m?'30':'00');t.appendChild(o);}}
-  var date=document.getElementById('f-date');
-  var tm=new Date();tm.setDate(tm.getDate()+1);
-  date.min=new Date().toISOString().slice(0,10);
-  if(!date.value) date.value=tm.toISOString().slice(0,10);
-
-  var form=document.getElementById('reserver'),ok=document.getElementById('f-ok');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var name=form.elements.name.value.trim(),tel=form.elements.tel.value.trim();
-    if(!name||!tel){ok.textContent='Enter your name and phone number to request a time.';ok.hidden=false;return;}
-    var dt=new Date(date.value+'T12:00');
-    var label=isNaN(dt)?date.value:dt.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
-    ok.textContent='Preview: '+form.elements.service.value+' on '+label+' at '+t.value+'. The form will be connected to the booking system.';
-    ok.hidden=false;
-  });
 })();
 </script>
+<script src="https://widget.simplybook.it/v2/widget/widget.js"></script>
+<script>if(window.SimplybookWidget) new SimplybookWidget({"widget_type": "iframe", "url": "https://barberico.simplybook.it", "theme": "default", "container_id": "sb-widget", "theme_settings": {"timeline_hide_unavailable": "1", "hide_past_days": "0", "timeline_show_end_time": "0", "timeline_modern_display": "as_slots", "sb_base_color": "#b8763f", "display_item_mode": "block", "booking_nav_bg_color": "#21170f", "body_bg_color": "#f6efe4", "sb_review_image": "1", "sb_review_image_preview": "/uploads/barberico/image_files/preview/2fcc234b39838aa4465afc6d93b4daf1.jpeg", "dark_font_color": "#21170f", "light_font_color": "#ffffff", "btn_color_1": "#b8763f", "sb_company_label_color": "#ffffff", "hide_img_mode": "1", "show_sidebar": "1", "sb_busy": "#d9c9b8", "sb_available": "#f3dcb6"}, "timeline": "modern", "datepicker": "top_calendar", "is_rtl": false, "app_config": {"clear_session": 0, "allow_switch_to_ada": 0, "predefined": []}});</script>
 </body>
 </html>
