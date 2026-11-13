@@ -1,10 +1,14 @@
 <!doctype html>
-<html lang="fr">
+<html lang="nl">
 <head>
 <meta charset="utf-8">
+<link rel="alternate" hreflang="nl" href="https://albanbekteshi.github.io/barberico/">
+<link rel="alternate" hreflang="fr" href="https://albanbekteshi.github.io/barberico/fr/">
+<link rel="alternate" hreflang="en" href="https://albanbekteshi.github.io/barberico/en/">
+<link rel="alternate" hreflang="x-default" href="https://albanbekteshi.github.io/barberico/">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Barberico Barbershop</title>
-<meta name="description" content="Barberico, barbershop chaleureux : coupe, barbe et rasage traditionnel au coin du feu.">
+<meta name="description" content="Barberico, een warme barbershop: knippen, baard en traditioneel scheren bij het haardvuur.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap">
@@ -116,7 +120,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 .hours td{padding:13px 0;border-bottom:1px solid var(--wood-2)}
 .hours td:last-child{text-align:right;color:var(--stone)}
 .hours tr.today td{color:var(--amber)}
-.hours tr.today td:first-child::after{content:"aujourd’hui";margin-left:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--copper);padding:2px 6px;vertical-align:2px}
+.hours tr.today td:first-child::after{content:"vandaag";margin-left:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--copper);padding:2px 6px;vertical-align:2px}
 .contact{display:grid;gap:6px;margin-top:32px;color:var(--stone);font-size:.95rem}
 .contact strong{color:var(--cream);font-weight:500}
 .book{background:var(--wood);border:1px solid var(--wood-2);padding:clamp(22px,4vw,40px);display:grid;gap:18px;align-content:start}
@@ -134,100 +138,106 @@ input:focus,select:focus{outline:none;border-color:var(--amber)}
 footer{border-top:1px solid var(--wood-2);padding-block:36px;color:var(--stone);font-size:.82rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
 
-/* Theme switcher shared with the "Atelier" version */
-.themes{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:2px;padding:4px;background:var(--wood);border:1px solid var(--wood-2);font:500 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase}
-.themes a{padding:8px 12px;text-decoration:none;color:var(--stone)}
-.themes a[aria-current]{background:var(--amber);color:var(--walnut)}
-.themes a:hover{color:var(--cream)}
-.themes a[aria-current]:hover{color:var(--walnut)}
 
 /* Brands strip: black logo banner blended into the walnut ground */
 .brands{padding-block:clamp(48px,7vw,80px);border-top:1px solid var(--wood-2)}
 .brands .wrap{display:grid;gap:24px;justify-items:center;text-align:center}
 .brands img{display:block;width:100%;max-width:1100px;height:auto;mix-blend-mode:screen;opacity:.9}
 .brands p{color:var(--stone);font-size:.92rem;max-width:52ch}
+
+/* Language switcher */
+.langs{display:flex;gap:2px;font:500 .74rem var(--body);letter-spacing:.12em}
+.langs a{padding:6px 8px;text-decoration:none;color:var(--stone)}
+.langs a[aria-current]{color:var(--amber)}
+.langs a:hover{color:var(--cream)}
+.top .right{display:flex;align-items:center;gap:10px}
+@media (max-width:560px){.top .right .btn{display:none}.brand b{font-size:1.05rem}.langs a{padding:6px 6px}
+.hero::after{background:linear-gradient(0deg,var(--walnut) 0%,color-mix(in srgb,var(--walnut) 72%,transparent) 100%)}}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#accueil" aria-label="Barberico, accueil">
+    <a class="brand" href="#accueil" aria-label="Barberico, home">
       <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="var(--amber)" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="Marcellus, Georgia, serif" font-size="20" fill="var(--amber)">B</text></svg>
       <b>BARBERICO</b>
     </a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#services">Services</a><a href="#maison">La maison</a><a href="#galerie">Galerie</a><a href="#visite">Horaires</a>
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <a href="#services">Diensten</a><a href="#maison">Het huis</a><a href="#galerie">Galerij</a><a href="#visite">Openingsuren</a>
     </nav>
-    <a class="btn" href="#reserver">Réserver</a>
+    <div class="right">
+      <nav class="langs" aria-label="Taal kiezen"><a href="./" hreflang="nl" lang="nl" aria-current="page">NL</a><a href="fr/" hreflang="fr" lang="fr">FR</a><a href="en/" hreflang="en" lang="en">EN</a></nav>
+      <a class="btn" href="#reserver">Reserveren</a>
+    </div>
   </div>
 </header>
 
 <main id="accueil">
   <section class="hero" style="padding:0">
-    <img src="images/salon.jpg" alt="Le salon Barberico : deux fauteuils en cuir, étagères en noyer éclairées et cheminée en pierre">
+    <img src="images/salon.jpg" alt="Het Barberico-salon: twee lederen stoelen, verlichte notenhouten rekken en een stenen haard">
     <div class="wrap">
-      <span class="eyebrow">Barbershop · Depuis 2024</span>
-      <h1>Prenez place <span class="it">au coin du feu.</span></h1>
-      <p class="lead">Coupes précises, barbes sculptées et rasage à la serviette chaude, dans un salon de bois, de cuir et de lumière ambrée. On vous sert un café, le reste nous regarde.</p>
+      <span class="eyebrow">Barbershop · Sinds 2024</span>
+      <h1>Neem plaats <span class="it">bij het haardvuur.</span></h1>
+      <p class="lead">Strakke kapsels, verzorgde baarden en scheren met een warme handdoek, in een salon van hout, leder en warm amberlicht. Wij schenken je een koffie in, de rest laat je aan ons over.</p>
       <div class="ctas">
-        <a class="btn" href="#reserver">Prendre rendez-vous</a>
-        <a class="btn ghost" href="#services">Voir les tarifs</a>
+        <a class="btn" href="#reserver">Afspraak maken</a>
+        <a class="btn ghost" href="#services">Bekijk de prijzen</a>
       </div>
-      <div class="facts"><span>Café offert</span><span>Fauteuils Belmont</span><span>Avec ou sans rendez-vous</span></div>
+      <div class="facts"><span>Gratis koffie</span><span>Belmont-stoelen</span><span>Met of zonder afspraak</span></div>
     </div>
   </section>
 
   <section id="services">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow">La carte</span>
-        <h2>Services &amp; tarifs</h2>
-        <p>Chaque prestation commence par un diagnostic et se termine par un coiffage soigné. Durées données à titre indicatif.</p>
+        <span class="eyebrow">De kaart</span>
+        <h2>Diensten &amp; prijzen</h2>
+        <p>Elke behandeling begint met een kort advies en eindigt met een verzorgde styling. De duur is indicatief.</p>
       </div>
       <div class="menu">
         <div>
-          <h3>Cheveux</h3>
-          <div class="svc"><div class="n"><strong>Coupe homme</strong><em>30 min</em></div><div class="p">25 €</div><p class="d">Shampoing, coupe aux ciseaux ou à la tondeuse, coiffage.</p></div>
-          <div class="svc"><div class="n"><strong>Dégradé à blanc</strong><em>40 min</em></div><div class="p">28 €</div><p class="d">Skin fade net, transitions travaillées, contours au rasoir.</p></div>
-          <div class="svc"><div class="n"><strong>Coupe enfant</strong><em>20 min</em></div><div class="p">18 €</div><p class="d">Jusqu’à 12 ans, avec la patience qu’il faut.</p></div>
-          <div class="svc"><div class="n"><strong>Coupe &amp; barbe</strong><em>50 min</em></div><div class="p">38 €</div><p class="d">La formule complète, avec serviette chaude pour finir.</p></div>
+          <h3>Haar</h3>
+          <div class="svc"><div class="n"><strong>Herenknipbeurt</strong><em>30 min</em></div><div class="p">25 €</div><p class="d">Shampoo, knippen met schaar of tondeuse, styling.</p></div>
+          <div class="svc"><div class="n"><strong>Skin fade</strong><em>40 min</em></div><div class="p">28 €</div><p class="d">Strakke skin fade, vloeiende overgangen, contouren met het mes.</p></div>
+          <div class="svc"><div class="n"><strong>Kinderknipbeurt</strong><em>20 min</em></div><div class="p">18 €</div><p class="d">Tot 12 jaar, met het nodige geduld.</p></div>
+          <div class="svc"><div class="n"><strong>Knippen &amp; baard</strong><em>50 min</em></div><div class="p">38 €</div><p class="d">De volledige formule, afgewerkt met een warme handdoek.</p></div>
         </div>
         <div>
-          <h3>Barbe &amp; rasage</h3>
-          <div class="svc"><div class="n"><strong>Taille de barbe</strong><em>20 min</em></div><div class="p">18 €</div><p class="d">Mise en forme, contours au rasoir, huile à barbe.</p></div>
-          <div class="svc"><div class="n"><strong>Rasage traditionnel</strong><em>35 min</em></div><div class="p">30 €</div><p class="d">Serviettes chaudes, mousse au blaireau, rasoir coupe-chou, baume apaisant.</p></div>
-          <div class="svc"><div class="n"><strong>Soin visage</strong><em>25 min</em></div><div class="p">22 €</div><p class="d">Gommage, masque et serviette chaude pour une peau reposée.</p></div>
-          <div class="svc"><div class="n"><strong>Le Rituel Barberico</strong><em>75 min</em></div><div class="p">55 €</div><p class="d">Coupe, rasage traditionnel et soin visage, au coin du feu.</p></div>
+          <h3>Baard &amp; scheren</h3>
+          <div class="svc"><div class="n"><strong>Baard trimmen</strong><em>20 min</em></div><div class="p">18 €</div><p class="d">In vorm brengen, contouren met het mes, baardolie.</p></div>
+          <div class="svc"><div class="n"><strong>Traditioneel scheren</strong><em>35 min</em></div><div class="p">30 €</div><p class="d">Warme handdoeken, scheerschuim met de kwast, open scheermes, verzachtende balsem.</p></div>
+          <div class="svc"><div class="n"><strong>Gezichtsverzorging</strong><em>25 min</em></div><div class="p">22 €</div><p class="d">Scrub, masker en warme handdoek voor een uitgeruste huid.</p></div>
+          <div class="svc"><div class="n"><strong>Het Barberico-ritueel</strong><em>75 min</em></div><div class="p">55 €</div><p class="d">Knippen, traditioneel scheren en gezichtsverzorging, bij het haardvuur.</p></div>
         </div>
       </div>
-      <p class="note">Tarifs indicatifs, à ajuster avant la mise en ligne.</p>
+      <p class="note">Indicatieve prijzen.</p>
     </div>
   </section>
 
   <section class="brands" id="marques">
     <div class="wrap">
-      <span class="eyebrow">Nos produits</span>
-      <img src="images/marques.jpg" alt="Les marques utilisées au salon : Reuzel, L’Anza, 18.21 Man Made et Layrite" width="1600" height="180" loading="lazy">
-      <p>Les cires, huiles et soins de ces marques sont utilisés au fauteuil et disponibles à la vente au salon.</p>
+      <span class="eyebrow">Onze producten</span>
+      <img src="images/marques.jpg" alt="De merken die we in het salon gebruiken: Reuzel, L’Anza, 18.21 Man Made en Layrite" width="1600" height="180" loading="lazy">
+      <p>We werken met de wax, oliën en verzorging van deze merken, en je kunt ze ook in het salon kopen.</p>
     </div>
   </section>
 
   <section class="story" id="maison">
     <div class="wrap">
       <figure>
-        <img src="images/cheminee.jpg" alt="La cheminée en pierre du salon, feu allumé">
-        <figcaption>Le feu est allumé dès novembre.</figcaption>
+        <img src="images/cheminee.jpg" alt="De stenen haard van het salon, met brandend vuur">
+        <figcaption>Vanaf november brandt het vuur.</figcaption>
       </figure>
       <div class="txt">
-        <span class="eyebrow">La maison</span>
-        <h2>Un salon où l’on <span class="it">prend son temps</span></h2>
-        <p>Barberico est né d’une idée simple : le passage chez le barbier doit rester un moment à soi. Murs en noyer, pierre brute, cuir patiné et lumière douce, tout ici invite à ralentir.</p>
-        <p>Nos barbiers travaillent la coupe classique comme les dégradés modernes, avec des produits choisis que vous retrouvez sur nos étagères.</p>
+        <span class="eyebrow">Het huis</span>
+        <h2>Een salon waar je <span class="it">de tijd neemt</span></h2>
+        <p>Barberico ontstond uit een eenvoudig idee: een bezoek aan de barbier moet een moment voor jezelf blijven. Notenhouten wanden, ruwe steen, gepatineerd leder en zacht licht: alles nodigt hier uit om even te vertragen.</p>
+        <p>Onze barbiers beheersen zowel klassieke kapsels als moderne fades, met zorgvuldig gekozen producten die je in onze rekken terugvindt.</p>
         <dl class="rituals">
-          <div><dt>Accueil</dt><dd>Un espresso, un thé ou une boisson fraîche pendant l’attente.</dd></div>
-          <div><dt>Le fauteuil</dt><dd>Deux postes, deux fauteuils Belmont, jamais de précipitation.</dd></div>
-          <div><dt>Les produits</dt><dd>Huiles, baumes et cires en vente au salon, conseillés selon votre barbe.</dd></div>
+          <div><dt>Ontvangst</dt><dd>Een espresso, thee of een frisdrank terwijl je wacht.</dd></div>
+          <div><dt>De stoel</dt><dd>Twee plaatsen, twee Belmont-stoelen, nooit gehaast.</dd></div>
+          <div><dt>De producten</dt><dd>Oliën, balsems en wax te koop in het salon, met advies voor jouw baard.</dd></div>
         </dl>
       </div>
     </div>
@@ -236,14 +246,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <section id="galerie">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow">Galerie</span>
-        <h2>L’atmosphère du salon</h2>
+        <span class="eyebrow">Galerij</span>
+        <h2>De sfeer in het salon</h2>
       </div>
       <div class="gal">
-        <figure class="big"><img src="images/fauteuil.jpg" alt="Fauteuil de barbier en cuir brun"><figcaption>Le fauteuil</figcaption></figure>
-        <figure><img src="images/etageres.jpg" alt="Étagères en bois éclairées garnies de flacons"><figcaption>Les étagères</figcaption></figure>
-        <figure><img src="images/cheminee.jpg" alt="Cheminée en pierre"><figcaption>La cheminée</figcaption></figure>
-        <figure class="wide"><img src="images/salon.jpg" alt="Vue d’ensemble du salon Barberico" style="object-position:50% 55%"><figcaption>Le salon</figcaption></figure>
+        <figure class="big"><img src="images/fauteuil.jpg" alt="Bruine lederen barbierstoel"><figcaption>De stoel</figcaption></figure>
+        <figure><img src="images/etageres.jpg" alt="Verlichte houten rekken vol flesjes"><figcaption>De rekken</figcaption></figure>
+        <figure><img src="images/cheminee.jpg" alt="Stenen haard"><figcaption>De haard</figcaption></figure>
+        <figure class="wide"><img src="images/salon.jpg" alt="Overzicht van het Barberico-salon" style="object-position:50% 55%"><figcaption>Het salon</figcaption></figure>
       </div>
     </div>
   </section>
@@ -252,44 +262,44 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
     <div class="wrap">
       <div>
         <div class="head" style="margin-bottom:28px">
-          <span class="eyebrow">Nous rendre visite</span>
-          <h2>Horaires</h2>
+          <span class="eyebrow">Kom langs</span>
+          <h2>Openingsuren</h2>
         </div>
-        <table class="hours" aria-label="Horaires d’ouverture">
+        <table class="hours" aria-label="Openingsuren">
           <tbody>
-            <tr data-d="1"><td>Lundi</td><td>Fermé</td></tr>
-            <tr data-d="2"><td>Mardi</td><td>10h00 – 18h00</td></tr>
-            <tr data-d="3"><td>Mercredi</td><td>10h00 – 18h00</td></tr>
-            <tr data-d="4"><td>Jeudi</td><td>11h00 – 20h00</td></tr>
-            <tr data-d="5"><td>Vendredi</td><td>11h00 – 20h00</td></tr>
-            <tr data-d="6"><td>Samedi</td><td>9h00 – 17h00</td></tr>
-            <tr data-d="0"><td>Dimanche</td><td>Fermé</td></tr>
+            <tr data-d="1"><td>Maandag</td><td>Gesloten</td></tr>
+            <tr data-d="2"><td>Dinsdag</td><td>10:00 – 18:00</td></tr>
+            <tr data-d="3"><td>Woensdag</td><td>10:00 – 18:00</td></tr>
+            <tr data-d="4"><td>Donderdag</td><td>11:00 – 20:00</td></tr>
+            <tr data-d="5"><td>Vrijdag</td><td>11:00 – 20:00</td></tr>
+            <tr data-d="6"><td>Zaterdag</td><td>9:00 – 17:00</td></tr>
+            <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
           </tbody>
         </table>
         <div class="contact">
           <strong>Barberico Barbershop</strong>
-          <span>Adresse à compléter</span>
-          <span>Téléphone : à compléter</span>
-          <span>Instagram : @barberico</span>
+          <span>Adres volgt</span>
+          <span>Telefoon: volgt</span>
+          <span>Instagram: @barberico</span>
         </div>
       </div>
 
       <form class="book" id="reserver" novalidate>
-        <span class="eyebrow">Rendez-vous</span>
-        <h3>Réserver votre fauteuil</h3>
-        <p>Choisissez une prestation et un créneau, nous confirmons par SMS.</p>
-        <label for="f-name">Nom<input id="f-name" name="name" autocomplete="name" placeholder="Votre nom" required></label>
+        <span class="eyebrow">Afspraak</span>
+        <h3>Reserveer je stoel</h3>
+        <p>Kies een behandeling en een tijdstip, wij bevestigen per sms.</p>
+        <label for="f-name">Naam<input id="f-name" name="name" autocomplete="name" placeholder="Je naam" required></label>
         <div class="grid2">
-          <label for="f-tel">Téléphone<input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="06 00 00 00 00" required></label>
-          <label for="f-svc">Prestation<select id="f-svc" name="service">
-            <option>Coupe homme</option><option>Dégradé à blanc</option><option>Coupe &amp; barbe</option><option>Taille de barbe</option><option>Rasage traditionnel</option><option>Soin visage</option><option>Le Rituel Barberico</option><option>Coupe enfant</option>
+          <label for="f-tel">Telefoon<input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="0470 00 00 00" required></label>
+          <label for="f-svc">Behandeling<select id="f-svc" name="service">
+            <option>Herenknipbeurt</option><option>Skin fade</option><option>Knippen &amp; baard</option><option>Baard trimmen</option><option>Traditioneel scheren</option><option>Gezichtsverzorging</option><option>Het Barberico-ritueel</option><option>Kinderknipbeurt</option>
           </select></label>
         </div>
         <div class="grid2">
-          <label for="f-date">Date<input id="f-date" name="date" type="date" required></label>
-          <label for="f-time">Heure<select id="f-time" name="time"></select></label>
+          <label for="f-date">Datum<input id="f-date" name="date" type="date" required></label>
+          <label for="f-time">Uur<select id="f-time" name="time"></select></label>
         </div>
-        <button class="btn" type="submit">Demander ce créneau</button>
+        <button class="btn" type="submit">Dit tijdstip aanvragen</button>
         <p class="ok" id="f-ok" hidden></p>
       </form>
     </div>
@@ -299,13 +309,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 <footer>
   <div class="wrap">
     <span>© 2026 Barberico Barbershop</span>
-    <span>Coupe · Barbe · Rasage traditionnel</span>
+    <span>Knippen · Baard · Traditioneel scheren</span>
   </div>
 </footer>
-
-<nav class="themes" aria-label="Choisir un thème">
-  <a href="./" aria-current="page">Classique</a><a href="atelier/">Atelier</a>
-</nav>
 
 <script>
 (function(){
@@ -314,7 +320,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   if(row) row.classList.add('today');
 
   var t=document.getElementById('f-time');
-  for(var h=9;h<20;h++){for(var m=0;m<60;m+=30){var o=document.createElement('option');o.textContent=h+'h'+(m?'30':'00');t.appendChild(o);}}
+  for(var h=9;h<20;h++){for(var m=0;m<60;m+=30){var o=document.createElement('option');o.textContent=h+':'+(m?'30':'00');t.appendChild(o);}}
   var date=document.getElementById('f-date');
   var tm=new Date();tm.setDate(tm.getDate()+1);
   date.min=new Date().toISOString().slice(0,10);
@@ -324,10 +330,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var name=form.elements.name.value.trim(),tel=form.elements.tel.value.trim();
-    if(!name||!tel){ok.textContent='Indiquez votre nom et votre téléphone pour demander un créneau.';ok.hidden=false;return;}
+    if(!name||!tel){ok.textContent='Vul je naam en telefoonnummer in om een tijdstip aan te vragen.';ok.hidden=false;return;}
     var dt=new Date(date.value+'T12:00');
-    var label=isNaN(dt)?date.value:dt.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
-    ok.textContent='Aperçu : '+form.elements.service.value+' le '+label+' à '+t.value+'. Le formulaire sera relié à votre outil de réservation lors de la mise en ligne.';
+    var label=isNaN(dt)?date.value:dt.toLocaleDateString('nl-BE',{weekday:'long',day:'numeric',month:'long'});
+    ok.textContent='Voorbeeld: '+form.elements.service.value+' op '+label+' om '+t.value+'. Het formulier wordt nog gekoppeld aan het reservatiesysteem.';
     ok.hidden=false;
   });
 })();
